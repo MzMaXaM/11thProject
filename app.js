@@ -11,27 +11,30 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
-  res.render()
+  res.render('index')
 })
 
 app.get('/restaurants', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'restaurants.html')
-  res.sendFile(filePath)
+  const filePath = path.join(__dirname, 'data', 'restaurants.json')
+  const fileData = fs.readFileSync(filePath)
+  const storedRestaurants = JSON.parse(fileData)
+
+  res.render('restaurants', {
+    numberOfRestaurants: storedRestaurants.length,
+    restaurants: storedRestaurants
+  })
 })
 
 app.get('/about', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'about.html')
-  res.sendFile(filePath)
+  res.render('about')
 })
 
 app.get('/confirm', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'confirm.html')
-  res.sendFile(filePath)
+  res.render('confirm')
 })
 
 app.get('/recommend', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'recommend.html')
-  res.sendFile(filePath)
+  res.render('recommend')
 })
 
 app.post('/recommend', (req, res) => {
