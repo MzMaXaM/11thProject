@@ -1,0 +1,43 @@
+main {
+  color: rgb(170, 148, 95);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  /* text-align: center; */
+}
+
+main h2 {
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+  text-align: start;
+  color: rgb(202, 158, 62);
+}
+main p{
+  margin: 0;
+  text-align: start;
+}
+main span {
+  display: inline-block;
+  text-align: end;
+  color: rgb(153, 112, 65);
+  font-weight: 100;
+}
+main a{
+  text-decoration: none;
+  position: relative;
+  color: rgb(240, 167, 9);
+  top: +2rem;
+  left: +2rem;
+  padding: 0.5rem;
+}
+main a:hover{
+  color: rgb(187, 114, 30);
+  background-color: rgb(223, 205, 185);
+}
+.description{
+  display: flex;
+  flex-direction: column;
+}
+.items{
+  display: flex;
+  flex-direction: column;
+}
