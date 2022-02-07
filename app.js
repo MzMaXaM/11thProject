@@ -40,7 +40,7 @@ app.get('/restaurants/:id', (req, res) => {
     }
   }
 
-
+  res.render('404')
 })
 
 app.get('/about', (req, res) => {
@@ -67,6 +67,10 @@ app.post('/recommend', (req, res) => {
   fs.writeFileSync(filePath, JSON.stringify(storedRestaurants))
 
   res.redirect('/confirm')
+})
+
+app.use((req, res)=>{
+  res.render('404')
 })
 
 app.listen(3322)
