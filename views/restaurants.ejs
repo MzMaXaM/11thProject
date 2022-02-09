@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('includes/head') %>
+
+<head>
+  <%- include('includes/head') %>
     <link rel="stylesheet" href="styles/restaurants.css" />
-  </head>
-  <body>
-    <%- include('includes/header') %>
+</head>
+
+<body>
+  <%- include('includes/header') %>
     <%- include('includes/aside') %>
-      
-    <main>
-      <h1>Recommended restaurants</h1>
-      <% if (numberOfRestaurants===0) { %>
-        <p>We don't have any.</p>
-        <p>Maybe recommend some?</p>
-        <% } else { %>
-          <p>Find your next favorite restaurants with help of our other users!</p>
-          <p>We found <%= numberOfRestaurants %> restaurants.</p>
-          <ul id="restaurants-list">
-            <% for(const restaurant of restaurants){ %>
-              <%- include('includes/restaurantItem', {
-                restaurant: restaurant
-              }) %> 
-              <% } %>
-          </ul>
-          <% } %>
-    </main>
-    
-  </body>
+
+      <main>
+        <h1>Recommended restaurants</h1>
+        <% if (numberOfRestaurants===0) { %>
+          <p>We don't have any.</p>
+          <p>Maybe recommend some?</p>
+          <% } else { %>
+            <p>Find your next favorite restaurants with help of our other users!</p>
+            <p>We found <%= numberOfRestaurants %> restaurants.</p>
+            <form action="/restaurants" method="GET">
+              <input type="hidden" value="<%= order %>" name="order">
+              <button class="btn">Change Order</button>
+            </form>
+            <ul id="restaurants-list">
+              <% for(const restaurant of restaurants){ %>
+                <%- include('includes/restaurantItem', { restaurant: restaurant }) %>
+                  <% } %>
+            </ul>
+            <% } %>
+      </main>
+
+</body>
+
 </html>
